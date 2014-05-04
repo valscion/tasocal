@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'ri_cal'
 gem 'httparty'
+gem 'activesupport'
 
 group :development do
   # An IRB alternative and runtime developer console
