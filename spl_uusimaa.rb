@@ -83,5 +83,6 @@ class SplUusimaa
       descr = event.description.gsub(%r{<a.+href=.+otteluid=(\d+).+</a></a>}, '\1')
       event.description = descr
     end
+    ical_data
   end
 end
