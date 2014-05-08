@@ -3,7 +3,6 @@ require 'active_support'
 require 'active_support/core_ext'
 require 'ri_cal'
 require 'httparty'
-require 'pry'
 
 require './app/match_fetcher'
 require './app/event_formatter'
