@@ -53,7 +53,8 @@ class MatchFetcher
         fetch_matches
       end
       tmp = ical_matches(raw_ical)
-      fix_descriptions(tmp)
+      tmp = fix_descriptions(tmp)
+      fix_dates(tmp)
     end
   end
 
@@ -89,5 +90,18 @@ class MatchFetcher
       event.description = descr
     end
     ical_data
+  end
+
+  def fix_dates(tmp)
+    ical_data.events.each do |event|
+      event.dtstart = fix_date_to_helsinki_zone(event.dtstart)
+      event.dtend = fix_date_to_helsinki_zone(event.dtend)
+    end
+    ical_data
+  end
+
+  def fix_date_to_helsinki_zone(date)
+    zoned = date.in_time_zone("Europe/Helsinki")
+    zoned - zoned.utc_offset
   end
 end
