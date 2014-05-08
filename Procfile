@@ -1,1 +1,1 @@
-web: bundle exec thin --debug --trace start -p $PORT
+web: bundle exec thin --debug start -p $PORT
