@@ -4,7 +4,8 @@ require 'active_support/core_ext'
 require 'ri_cal'
 require 'httparty'
 require 'pry'
-require './spl_uusimaa'
+
+require './app/spl_uusimaa'
 
 APPLICATION_NAME = 'vesq-spluusimaa-ical'
 
