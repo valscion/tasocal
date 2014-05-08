@@ -2,7 +2,7 @@
   "folders":
   [
     {
-      "name": "spluusimaa-ical",
+      "name": "spluusimaa-calsync",
       "path": ".",
       "follow_symlinks": true,
       "folder_exclude_patterns": ["tmp", ".git", "vendor", ".sass-cache"],
