@@ -35,3 +35,8 @@ group :development do
   # Fast and easy syntax highlighting for selected languages, written in Ruby
   gem 'coderay'
 end
+
+group :production do
+  # Faster webserver than the normal WEBRick
+  gem 'thin'
+end

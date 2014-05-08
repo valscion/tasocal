@@ -10,6 +10,7 @@ GEM
     coderay (1.1.0)
     columnize (0.3.6)
     coolline (0.4.3)
+    daemons (1.1.9)
     debug_inspector (0.0.2)
     debugger (1.6.5)
       columnize (>= 0.3.1)
@@ -17,6 +18,7 @@ GEM
       debugger-ruby_core_source (~> 1.3.1)
     debugger-linecache (1.2.0)
     debugger-ruby_core_source (1.3.1)
+    eventmachine (1.0.3)
     hirb (0.7.1)
     httparty (0.12.0)
       json (~> 1.8)
@@ -51,6 +53,10 @@ GEM
       rack-protection (~> 1.4)
       tilt (~> 1.3, >= 1.3.4)
     slop (3.4.7)
+    thin (1.5.1)
+      daemons (>= 1.0.9)
+      eventmachine (>= 0.12.6)
+      rack (>= 1.0.0)
     tilt (1.4.1)
     yard (0.8.7.3)
 
@@ -71,3 +77,4 @@ DEPENDENCIES
   pry-stack_explorer
   ri_cal
   sinatra
+  thin
