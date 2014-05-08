@@ -5,13 +5,13 @@ require 'ri_cal'
 require 'httparty'
 require 'pry'
 
-require './app/spl_uusimaa'
+require './app/match_fetcher'
 require './app/event_formatter'
 
 require 'sinatra'
 
 get '/' do
-  client = SplUusimaa.new('account@example.com', 'password')
+  client = MatchFetcher.new('account@example.com', 'password')
 
   puts 'Logging in...'
   client.login!

@@ -1,4 +1,4 @@
-class SplUusimaa
+class MatchFetcher
   include HTTParty
   APPLICATION_NAME = 'vesq-spluusimaa-ical'
 
