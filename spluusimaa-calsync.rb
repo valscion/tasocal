@@ -4,6 +4,8 @@ require 'active_support/core_ext'
 require 'ri_cal'
 require 'httparty'
 
+RiCal::PropertyValue::DateTime.default_tzid = "Europe/Helsinki"
+
 require './app/match_fetcher'
 require './app/event_formatter'
 
