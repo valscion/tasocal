@@ -92,7 +92,7 @@ class MatchFetcher
     ical_data
   end
 
-  def fix_dates(tmp)
+  def fix_dates(ical_data)
     ical_data.events.each do |event|
       event.dtstart = fix_date_to_helsinki_zone(event.dtstart)
       event.dtend = fix_date_to_helsinki_zone(event.dtend)
