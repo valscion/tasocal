@@ -10,6 +10,10 @@ require './app/event_formatter'
 require 'sinatra'
 
 get '/' do
+  erb :index
+end
+
+get '/cal' do
   client = MatchFetcher.new('account@example.com', 'password')
 
   puts 'Logging in...'
