@@ -7,8 +7,6 @@ require 'pry'
 
 require './app/spl_uusimaa'
 
-APPLICATION_NAME = 'vesq-spluusimaa-ical'
-
 class EventFormatter
   attr_reader :ical
 

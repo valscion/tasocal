@@ -1,5 +1,6 @@
 class SplUusimaa
   include HTTParty
+  APPLICATION_NAME = 'vesq-spluusimaa-ical'
 
   class LoginFailed < StandardError; end
 
