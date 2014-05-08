@@ -47,19 +47,9 @@ class MatchFetcher
 
   def matches
     @matches ||= begin
-      raw_ical = fetch_matches_with_cache
+      raw_ical = fetch_matches
       tmp = ical_matches(raw_ical)
       fix_descriptions(tmp)
-    end
-  end
-
-  def fetch_matches_with_cache
-    if File.exists?("tmp.ics")
-      File.read("tmp.ics")
-    else
-      fetched = fetch_matches
-      File.write("tmp.ics", fetched)
-      fetched
     end
   end
 
