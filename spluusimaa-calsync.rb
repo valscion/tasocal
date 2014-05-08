@@ -13,12 +13,12 @@ get '/' do
   erb :index
 end
 
-get '/cal' do
-  client = MatchFetcher.new('account@example.com', 'password')
+get '/cal/:email/:password' do |email, password|
+  client = MatchFetcher.new(email, password)
 
-  puts 'Logging in...'
+  logger.info "Logging in #{email}..."
   client.login!
-  puts 'Logged in!'
+  puts "Logged in #{email}!"
 
   puts 'Fetching matches...'
   matches_raw = client.matches
