@@ -8,19 +8,23 @@ require 'pry'
 require './app/spl_uusimaa'
 require './app/event_formatter'
 
-client = SplUusimaa.new('account@example.com', 'password')
+require 'sinatra'
 
-puts 'Logging in...'
-client.login!
-puts 'Logged in!'
+get '/' do
+  client = SplUusimaa.new('account@example.com', 'password')
 
-puts 'Fetching matches...'
-matches_raw = client.matches
-puts 'Matches fetched!'
+  puts 'Logging in...'
+  client.login!
+  puts 'Logged in!'
 
-matches = EventFormatter.new(matches_raw)
-matches.remove_events_beginning_after(DateTime.now)
-matches.set_event_lengths(2.hours)
-matches.join_consecutive_events
+  puts 'Fetching matches...'
+  matches_raw = client.matches
+  puts 'Matches fetched!'
 
-binding.pry
+  matches = EventFormatter.new(matches_raw)
+  matches.remove_events_beginning_after(DateTime.now)
+  matches.set_event_lengths(2.hours)
+  matches.join_consecutive_events
+
+  matches.ical.export
+end
