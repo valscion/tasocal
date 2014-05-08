@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'ri_cal'
 gem 'httparty'
 gem 'activesupport'
+gem 'sinatra'
 
 group :development do
   # An IRB alternative and runtime developer console
