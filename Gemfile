@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 ruby '1.9.3'
 
 gem 'icalendar', '~> 2.0.1'
+gem 'tzinfo', '~> 1.1'
 gem 'httparty'
 gem 'activesupport'
 gem 'sinatra'
