@@ -24,6 +24,7 @@ GEM
       json (~> 1.8)
       multi_xml (>= 0.5.2)
     i18n (0.6.9)
+    icalendar (2.0.1)
     json (1.8.1)
     method_source (0.8.2)
     multi_json (1.8.4)
@@ -47,7 +48,6 @@ GEM
     rack (1.4.5)
     rack-protection (1.5.0)
       rack
-    ri_cal (0.8.8)
     sinatra (1.4.5)
       rack (~> 1.4)
       rack-protection (~> 1.4)
@@ -70,11 +70,11 @@ DEPENDENCIES
   coolline
   hirb
   httparty
+  icalendar (~> 2.0.1)
   pry
   pry-debugger
   pry-doc
   pry-remote
   pry-stack_explorer
-  ri_cal
   sinatra
   thin
