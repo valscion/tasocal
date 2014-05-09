@@ -58,11 +58,11 @@ class MatchFetcher
   end
 
   def fetch_matches_with_cache
-    if File.exists?("tmp.ics")
-      File.read("tmp.ics")
+    if File.exists?("tmp/tmp.ics")
+      File.read("tmp/tmp.ics")
     else
       fetched = fetch_matches
-      File.write("tmp.ics", fetched)
+      File.write("tmp/tmp.ics", fetched)
       fetched
     end
   end
