@@ -2,6 +2,7 @@
 require 'active_support'
 require 'active_support/core_ext'
 require 'icalendar'
+require 'icalendar/tzinfo'
 require 'httparty'
 
 require './app/match_fetcher'
