@@ -1,10 +1,8 @@
 #!/usr/bin/env ruby
 require 'active_support'
 require 'active_support/core_ext'
-require 'ri_cal'
+require 'icalendar'
 require 'httparty'
-
-RiCal::PropertyValue::DateTime.default_tzid = "Europe/Helsinki"
 
 require './app/match_fetcher'
 require './app/event_formatter'
@@ -31,5 +29,5 @@ get '/cal/:email/:password' do |email, password|
   matches.set_event_lengths(2.hours)
   matches.join_consecutive_events
 
-  matches.ical.export
+  matches.ical.to_ical
 end

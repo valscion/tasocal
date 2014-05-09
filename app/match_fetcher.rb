@@ -80,12 +80,12 @@ class MatchFetcher
   end
 
   def ical_matches(raw_ical)
-    RiCal.parse_string(raw_ical).first
+    Icalendar.parse(raw_ical).first
   end
 
   def fix_descriptions(ical_data)
     ical_data.events.each do |event|
-      descr = event.description.gsub(%r{<a.+href=.+otteluid=(\d+).+</a></a>}, '\1')
+      descr = event.description.join.gsub(%r{<a.+href=.+otteluid=(\d+).+</a></a>}, '\1')
       event.description = descr
     end
     ical_data
