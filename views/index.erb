@@ -28,5 +28,16 @@
 <p>Pitää muistaa tarkkailla matseja viikon välein ja kirjoitella käsin tietoja ylös. Raskaaksi se menee kun haluaa vielä pistää ylös muut tuomarit, sarja ja pelaavat joukkueet.</p>
 <p>Ohjelmasta löytyy kuitenkin hieno ominaisuus, nimittäin iCalendar-muodossa tuotavat tapahtumat.</p> <p><img src="/nayta_ottelulistalla_icalendar.png" width="294" height="118" alt="Kuva linkistä" /></p>
 <p>Ongelmana tässä syötteessä on se, että kalenterisovellukset eivät osaa lukea sitä, koska TASO ei osaa tuottaa oikeanlaista kalenterikoodia. Lisäksi kyseinen syöte ei osaa asettaa matseille kestoa, mikä näyttää hassulta kalenterissa.</p>
-<h3>Ongelmaan on olemassa lääke!</h3>
+<h3>Miten tämä toimii?</h3>
 <p>Tämä palvelu on luotu tuottamaan järkevää, kalenteriohjelmien ymmärtämää tapahtumadataa kaikista <strong>tulevista</strong> matseista. Voit lisätä sen mihin tahansa kalenterisovellukseen, joka tukee kalenterisyötteitä.</p>
+<p>Ohjelma tekee seuraavat asiat:</p>
+<ol>
+  <li>Hae TASOsta (viallinen) iCalendar-syöte</li>
+  <li>Muuta syötteen data oikeaan muotoon</li>
+  <li>Poista syötteestä kaikki menneet tapahtumat</li>
+  <li>Aseta kaikkien otteluiden pituudeksi kaksi tuntia</li>
+  <li>Yhdistä peräkkäisten otteluiden lopetus- ja alkamisajat</li>
+  <li>Palauta uusi iCalendar-syöte oikeilla aikavyöhykkeillä varustettuna</li>
+</ol>
+<h2>Palaute</h2>
+<p>Mikäli jotain on vialla tai haluat muuten vaan antaa palautetta, saa minut kiinni <a href="https://github.com/VesQ">GitHub-profiilistani</a> löytyvän sähköpostin kautta.</p>
