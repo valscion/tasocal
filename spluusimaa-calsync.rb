@@ -14,16 +14,12 @@ get '/' do
   erb :index
 end
 
-get '/cal/:email/:password' do |email, password|
-  client = MatchFetcher.new(email, password)
+get '/cal/:referee_id' do |referee_id|
+  client = MatchFetcher.new(referee_id)
 
-  logger.info "Logging in #{email}..."
-  client.login!
-  puts "Logged in #{email}!"
-
-  puts 'Fetching matches...'
+  puts "Fetching matches for ##{referee_id}..."
   matches_raw = client.matches
-  puts 'Matches fetched!'
+  puts "Matches fetched for ##{referee_id}!"
 
   matches = EventFormatter.new(matches_raw)
   matches.remove_events_beginning_after(DateTime.now)
