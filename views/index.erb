@@ -1,4 +1,16 @@
-<p>Tulevien matsien ylläpitäminen kalenterissa on rankkaa, eikö vain? Pitää muistaa tarkkailla matseja viikon välein ja kirjoitella käsin tietoja ylös. Raskaaksi se menee kun haluaa vielä pistää ylös muut tuomarit, sarja ja pelaavat joukkueet.</p>
+<div class="jumbotron">
+  <h1>Matsit kalenteriin!</h1>
+  <p>Synkronoi matsisi helposti Google-kalenteriin, Outlookiin, Applen kalenterisoftaan tai minne vain! Palvelu matsien synkronoimiseen <a href="http://www.spluusimaa.fi">SPL Uusimaan TASO-ohjelmasta</a></p>
+  <form action="/cal" class="form-inline">
+    <div class="form-group">
+      <label class="sr-only" for="exampleInputEmail2">Tuomari-ID</label>
+      <input type="text" class="form-control" id="referee_id" name="referee_id" placeholder="Syötä tuomari-ID">
+    </div>
+    <input type="submit" class="btn btn-success" value="Hae iCalendar-syöte">
+  </form>
+</div>
+<p>Tulevien matsien ylläpitäminen kalenterissa on rankkaa, eikö vain?</p>
+<p>Pitää muistaa tarkkailla matseja viikon välein ja kirjoitella käsin tietoja ylös. Raskaaksi se menee kun haluaa vielä pistää ylös muut tuomarit, sarja ja pelaavat joukkueet.</p>
 <p>Ohjelmasta löytyy kuitenkin hieno ominaisuus, nimittäin iCalendar-muodossa tuotavat tapahtumat.</p> <p><img src="/nayta_ottelulistalla_icalendar.png" width="294" height="118" alt="Kuva linkistä" /></p>
 <p>Ongelmana tässä syötteessä on se, että kalenterisovellukset eivät osaa lukea sitä, koska TASO ei osaa tuottaa oikeanlaista kalenterikoodia. Lisäksi kyseinen syöte ei osaa asettaa matseille kestoa, mikä näyttää hassulta kalenterissa.</p>
 <h3>Ongelmaan on olemassa lääke!</h3>
