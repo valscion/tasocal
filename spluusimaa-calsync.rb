@@ -14,6 +14,14 @@ get '/' do
   erb :index
 end
 
+get '/cal' do
+  if params[:referee_id].present?
+    redirect to("/cal/#{params[:referee_id]}")
+  else
+    redirect to("/")
+  end
+end
+
 get '/cal/:referee_id' do |referee_id|
   client = MatchFetcher.new(referee_id)
 
