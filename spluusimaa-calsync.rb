@@ -15,11 +15,8 @@ get '/' do
 end
 
 get '/cal' do
-  if params[:referee_id].present?
-    redirect to("/cal/#{params[:referee_id]}")
-  else
-    redirect to("/")
-  end
+  @referee_id = params[:referee_id].to_i if params.has_key? :referee_id
+  erb :cal
 end
 
 get '/cal/:referee_id' do |referee_id|
