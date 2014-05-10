@@ -15,7 +15,10 @@ get '/' do
 end
 
 get '/cal' do
-  @referee_id = params[:referee_id].to_i if params.has_key? :referee_id
+  @referee_id = if params[:referee_id].present?
+    id_as_number = params[:referee_id].to_i
+    (id_as_number > 0) ? id_as_number : nil
+  end
   erb :cal
 end
 
