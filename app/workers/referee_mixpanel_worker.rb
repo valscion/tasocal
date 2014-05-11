@@ -13,11 +13,12 @@ class RefereeMixpanelWorker
       .slice(:distinct_id, :ip)
       .merge(optional_params: optional_params(mixpanel_options[:properties]))
 
+    once_properties = { 'First Calendar Feed Fetch' => Time.now.to_i }
+    once_properties.merge!(fetch_name_hash(referee_id))
     once_options = basic_options.merge({
-      properties: {
-        'First Calendar Feed Fetch' => Time.now,
-      }.merge(fetch_name_hash(referee_id))
+      properties: once_properties
     })
+
     increment_options = basic_options.merge({
       properties: {
         'Feed Results Fetched' => 1
@@ -34,7 +35,7 @@ class RefereeMixpanelWorker
   def fetch_name_hash(referee_id)
     person = {}
     result = HTTParty.get("http://www.spluusimaa.fi/taso/ottelulista.php?tuomari=#{referee_id}")
-    regex_name = result.response.body.match(%r{<h1>([^<]+)</h1>}) if result.response.code == 200
+    regex_name = result.response.body.match(%r{<h1>([^<]+)</h1>}) if result.response.code == "200"
     unless regex_name.nil?
       full_name = regex_name[1]
       last_name, first_name = full_name.split(" ", 2)
