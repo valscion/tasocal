@@ -8,6 +8,8 @@ gem 'httparty'
 gem 'activesupport'
 gem 'sinatra'
 gem 'mixpanel-ruby'
+gem 'redis'
+gem 'sidekiq'
 
 group :development do
   # An IRB alternative and runtime developer console
