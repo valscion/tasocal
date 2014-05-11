@@ -1,3 +1,5 @@
+ENV['REDIS_URL'] = ENV['REDISTOGO_URL'] unless ENV['REDISTOGO_URL'].nil?
+
 require 'sidekiq/web'
 map '/sidekiq' do
   use Rack::Auth::Basic, "Protected Area" do |username, password|
