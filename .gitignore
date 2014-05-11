@@ -44,3 +44,6 @@ pickle-email-*.html
 
 # Sublime crud
 *.sublime-workspace
+
+# Don't add environment variables to git
+.env

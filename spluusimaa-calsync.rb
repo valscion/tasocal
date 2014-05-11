@@ -10,6 +10,14 @@ require './app/event_formatter'
 
 require 'sinatra'
 
+configure do
+  set :mixpanel, begin
+    if settings.production? || (settings.development? && ENV['MIXPANEL_ENABLED'])
+      ENV['MIXPANEL_TOKEN']
+    end
+  end
+end
+
 get '/' do
   erb :index
 end
