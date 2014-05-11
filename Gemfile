@@ -7,6 +7,7 @@ gem 'tzinfo', '~> 1.1'
 gem 'httparty'
 gem 'activesupport'
 gem 'sinatra'
+gem 'mixpanel-ruby'
 
 group :development do
   # An IRB alternative and runtime developer console
