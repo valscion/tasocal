@@ -11,6 +11,9 @@ map '/sidekiq' do
   Sidekiq.configure_client do |config|
     config.redis = { :namespace => 'spluusimaa-calsync' }
   end
+  Sidekiq.configure_server do |config|
+    config.redis = { :namespace => 'spluusimaa-calsync' }
+  end
 
   run Sidekiq::Web
 end
