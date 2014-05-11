@@ -26,7 +26,10 @@ class EventFormatter
       sorted = grouped_events.sort {|a, b| b.dtstart <=> a.dtstart}
       last_start = nil
       sorted.each do |event|
-        event.dtend = last_start unless last_start.nil?
+        # Only join events which overlap
+        if last_start.present? && last_start < event.dtend
+          event.dtend = last_start
+        end
         last_start = event.dtstart
       end
     end
