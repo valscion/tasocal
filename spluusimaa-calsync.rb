@@ -63,11 +63,14 @@ get '/cal/:referee_id' do |referee_id|
       properties['$referrer'] = request.referrer
       properties['$referring_domain'] = uri.host
     end
-    MixpanelWorker.perform_async(settings.mixpanel, {
-      distinct_id: "referee-#{referee_id}",
-      event: "Fetched Calendar Feed",
-      ip: request.ip,
-      properties: properties
+    RefereeMixpanelWorker.perform_async(referee_id, {
+      mixpanel_token: settings.mixpanel,
+      mixpanel_options: {
+        distinct_id: "referee-#{referee_id}",
+        event: "Fetched Calendar Feed",
+        ip: request.ip,
+        properties: properties
+      }
     })
   end
 
