@@ -16,8 +16,7 @@ class MatchFetcher
         fetch_matches
       end
       tmp = ical_matches(raw_ical)
-      tmp = fix_descriptions(tmp)
-      set_timezone(tmp, "Europe/Helsinki")
+      fix_descriptions(tmp)
     end
   end
 
@@ -51,17 +50,6 @@ class MatchFetcher
     ical_data.events.each do |event|
       descr = event.description.join.gsub(%r{<a.+href=.+otteluid=(\d+).+</a></a>}, '\1')
       event.description = descr
-    end
-    ical_data
-  end
-
-  def set_timezone(ical_data, timezone_name)
-    tz = TZInfo::Timezone.get timezone_name
-    timezone = tz.ical_timezone DateTime.new(2002, 1, 1, 1, 1)
-    ical_data.add_timezone(timezone)
-    ical_data.events.each do |e|
-      e.dtstart = Icalendar::Values::DateTime.new(e.dtstart, 'tzid' => timezone_name)
-      e.dtend = Icalendar::Values::DateTime.new(e.dtend, 'tzid' => timezone_name)
     end
     ical_data
   end

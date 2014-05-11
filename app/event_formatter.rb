@@ -31,4 +31,14 @@ class EventFormatter
       end
     end
   end
+
+  def set_timezone(timezone_name)
+    tz = TZInfo::Timezone.get timezone_name
+    timezone = tz.ical_timezone DateTime.new(2002, 1, 1, 1, 1)
+    @ical.add_timezone(timezone)
+    @ical.events.each do |e|
+      e.dtstart = Icalendar::Values::DateTime.new(e.dtstart, 'tzid' => timezone_name)
+      e.dtend = Icalendar::Values::DateTime.new(e.dtend, 'tzid' => timezone_name)
+    end
+  end
 end
