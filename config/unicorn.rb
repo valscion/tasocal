@@ -9,9 +9,6 @@ before_fork do |server, worker|
     Process.kill 'QUIT', Process.pid
   end
 
-  require 'pry'
-  require 'pry-remote'
-  #binding.remote_pry
   @sidekiq_pid ||= spawn("bundle exec sidekiq -c 2 -r ./spluusimaa-calsync.rb")
 end
 
