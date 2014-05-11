@@ -7,6 +7,7 @@ gem 'tzinfo', '~> 1.1'
 gem 'httparty'
 gem 'activesupport'
 gem 'sinatra'
+gem 'unicorn'
 gem 'mixpanel-ruby'
 gem 'redis'
 gem 'sidekiq'
@@ -40,9 +41,4 @@ group :development do
 
   # Fast and easy syntax highlighting for selected languages, written in Ruby
   gem 'coderay'
-end
-
-group :production do
-  # Faster webserver than the normal WEBRick
-  gem 'thin'
 end
