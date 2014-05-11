@@ -7,6 +7,7 @@ require 'httparty'
 
 require './app/match_fetcher'
 require './app/event_formatter'
+require './app/workers'
 
 require 'sinatra'
 
@@ -15,6 +16,14 @@ configure do
     if settings.production? || (settings.development? && ENV['MIXPANEL_ENABLED'])
       ENV['MIXPANEL_TOKEN']
     end
+  end
+
+  Sidekiq.configure_server do |config|
+    config.redis = { :namespace => 'spluusimaa-calsync' }
+  end
+
+  Sidekiq.configure_client do |config|
+    config.redis = { :namespace => 'spluusimaa-calsync' }
   end
 end
 
@@ -42,6 +51,25 @@ get '/cal/:referee_id' do |referee_id|
   matches.set_event_lengths(2.hours)
   matches.join_consecutive_events
   matches.set_timezone("Europe/Helsinki")
+
+  if settings.mixpanel?
+    uri = URI.parse(request.referrer) unless request.referrer.nil?
+    properties = {
+      'User Agent' => request.user_agent,
+      'time' => Time.now.to_i,
+      'referee_id' => referee_id
+    }
+    unless uri.nil?
+      properties['$referrer'] = request.referrer
+      properties['$referring_domain'] = uri.host
+    end
+    MixpanelWorker.perform_async(settings.mixpanel, {
+      distinct_id: "referee-#{referee_id}",
+      event: "Fetched Calendar Feed",
+      ip: request.ip,
+      properties: properties
+    })
+  end
 
   matches.ical.to_ical
 end
