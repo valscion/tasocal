@@ -2,7 +2,7 @@ class MatchFetcher
   include HTTParty
   APPLICATION_NAME = 'vesq-spluusimaa-ical'
 
-  base_uri 'http://www.spluusimaa.fi/taso'
+  base_uri 'http://taso.palloliitto.fi/taso'
 
   def initialize(referee_id)
     @referee_id = referee_id
@@ -34,12 +34,6 @@ class MatchFetcher
     response = self.class.get('/tehtavakalenteri.php', query: {
       tuomari: @referee_id
     })
-
-    # spluusimaa.fi returns invalid iCal format, fix it to be importable.
-    raw_ical = response.body.gsub(%r{^DT(START|END);}, 'DT\1:')
-
-    # The encoding is said to be ISO-8859-1 but it is actually UTF-8
-    raw_ical.encode!('utf-8', 'utf-8')
   end
 
   def ical_matches(raw_ical)
@@ -48,7 +42,8 @@ class MatchFetcher
 
   def fix_descriptions(ical_data)
     ical_data.events.each do |event|
-      descr = event.description.join.gsub(%r{<a.+href=.+otteluid=(\d+).+</a></a>}, '\1')
+      orig_descr_str = event.description.respond_to?(:join) ? event.description.join : event.description
+      descr = orig_descr_str.gsub(%r{<a.+href=.+otteluid=(\d+).+</a>}, '\1')
       event.description = descr
     end
     ical_data
