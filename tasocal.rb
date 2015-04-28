@@ -19,11 +19,11 @@ configure do
   end
 
   Sidekiq.configure_server do |config|
-    config.redis = { :size => 5, :namespace => 'spluusimaa-calsync' }
+    config.redis = { :size => 5, :namespace => 'tasocal' }
   end
 
   Sidekiq.configure_client do |config|
-    config.redis = { :size => 1, :namespace => 'spluusimaa-calsync' }
+    config.redis = { :size => 1, :namespace => 'tasocal' }
   end
 end
 

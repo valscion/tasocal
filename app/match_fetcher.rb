@@ -1,6 +1,6 @@
 class MatchFetcher
   include HTTParty
-  APPLICATION_NAME = 'vesq-spluusimaa-ical'
+  APPLICATION_NAME = 'vesq-tasocal'
 
   base_uri 'http://taso.palloliitto.fi/taso'
 

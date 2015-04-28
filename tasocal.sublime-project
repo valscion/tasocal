@@ -2,7 +2,7 @@
   "folders":
   [
     {
-      "name": "spluusimaa-calsync",
+      "name": "tasocal",
       "path": ".",
       "follow_symlinks": true,
       "folder_exclude_patterns": ["tmp", ".git", "vendor", ".sass-cache"],

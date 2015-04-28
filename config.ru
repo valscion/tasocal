@@ -9,14 +9,14 @@ map '/sidekiq' do
   end
 
   Sidekiq.configure_client do |config|
-    config.redis = { :namespace => 'spluusimaa-calsync' }
+    config.redis = { :namespace => 'tasocal' }
   end
   Sidekiq.configure_server do |config|
-    config.redis = { :namespace => 'spluusimaa-calsync' }
+    config.redis = { :namespace => 'tasocal' }
   end
 
   run Sidekiq::Web
 end
 
-require './spluusimaa-calsync'
+require './tasocal'
 run Sinatra::Application
