@@ -31,21 +31,20 @@ class RefereeMixpanelWorker
   end
 
   private
-
   def fetch_name_hash(referee_id)
     person = {}
-    result = HTTParty.get("http://www.spluusimaa.fi/taso/ottelulista.php?tuomari=#{referee_id}")
-    regex_name = result.response.body.match(%r{<h1>([^<]+)</h1>}) if result.response.code == "200"
+    result = HTTParty.get("http://taso.palloliitto.fi/taso/ottelulista.php?tuomari=#{referee_id}")
+    regex_name = result.response.body.match(%r{<title>Ottelulista - ([^|]+) | Suomen Palloliitto</title>}) if result.response.code == "200"
     if regex_name.nil?
       raise "Failed to fetch name for ##{referee_id}"
     else
       full_name = regex_name[1]
       last_name, first_name = full_name.split(" ", 2)
       if first_name.nil? || last_name.nil?
-        person['$name'] = full_name
+        person['$name'] = full_name.strip
       else
-        person['$first_name'] = first_name
-        person['$last_name'] = last_name
+        person['$first_name'] = first_name.strip
+        person['$last_name'] = last_name.strip
       end
     end
     person
