@@ -1,7 +1,39 @@
 <div class="jumbotron">
   <h1>Kalenterisi osoite</h1>
-  <div class="well calendar_url">
+  <div class="well calendar_url" id="ical_url">
     <%= url("/cal/#{@referee_id || '&lt;tuomarinumerosi&gt;'}") %>
   </div>
   <p>Lisää tämä iCalendar-syöte <a href="https://support.google.com/calendar/answer/37100?hl=fi" title="Ohjeet syötteen lisäämiselle Google-kalenteriin">Google-kalenteriin</a> tai muuhun iCalendar-syötteitä tukevaan sovellukseen.</p>
 </div>
+
+<script>
+
+
+(function () {
+  function selectText(element) {
+      var doc = document,
+        range,
+        selection;
+
+      if (doc.body.createTextRange) {
+          range = document.body.createTextRange();
+          range.moveToElementText(element);
+          range.select();
+      } else if (window.getSelection) {
+          selection = window.getSelection();
+          range = document.createRange();
+          range.selectNodeContents(element);
+          selection.removeAllRanges();
+          selection.addRange(range);
+      }
+  }
+
+  if (document.addEventListener) {
+    var urlElem = document.getElementById('ical_url');
+    urlElem.addEventListener('click', function () {
+      selectText(urlElem);
+    });
+  }
+})();
+
+</script>
