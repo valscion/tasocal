@@ -5,6 +5,10 @@ class EventFormatter
     @ical = ical_data
   end
 
+  def set_ical_to_v2
+    @ical.version = '2.0'
+  end
+
   def remove_events_beginning_after(time)
     @ical.events.reject! do |event|
       event.dtstart < time

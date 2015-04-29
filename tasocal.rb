@@ -47,6 +47,7 @@ get '/cal/:referee_id' do |referee_id|
   puts "Matches fetched for ##{referee_id}!"
 
   matches = EventFormatter.new(matches_raw)
+  matches.set_ical_to_v2
   matches.remove_events_beginning_after(DateTime.now)
   matches.set_event_lengths(2.hours)
   matches.join_consecutive_events
