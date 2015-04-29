@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '1.9.3'
+ruby '2.1.2'
 
 gem 'icalendar', '~> 2.0.1'
 gem 'tzinfo', '~> 1.1'
@@ -31,7 +31,7 @@ group :development do
   gem 'pry-remote'
 
   # Pry navigation commands via debugger (formerly ruby-debug)
-  gem 'pry-debugger'
+  gem 'pry-byebug'
 
   # Walk the stack in a Pry session
   gem 'pry-stack_explorer'
