@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.1.2'
 
-gem 'icalendar', '~> 2.0.1'
+gem 'icalendar', '~> 2.3.0'
 gem 'tzinfo', '~> 1.1'
 gem 'httparty'
 gem 'activesupport'

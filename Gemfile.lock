@@ -23,7 +23,7 @@ GEM
       json (~> 1.8)
       multi_xml (>= 0.5.2)
     i18n (0.6.9)
-    icalendar (2.0.1)
+    icalendar (2.3.0)
     json (1.8.1)
     kgio (2.9.2)
     method_source (0.8.2)
@@ -85,7 +85,7 @@ DEPENDENCIES
   coolline
   hirb
   httparty
-  icalendar (~> 2.0.1)
+  icalendar (~> 2.3.0)
   mixpanel-ruby
   pry
   pry-byebug
