@@ -16,7 +16,7 @@ class MatchFetcher
         fetch_matches
       end
       tmp = ical_matches(raw_ical)
-      fix_descriptions(tmp)
+      setup_descriptions(tmp)
     end
   end
 
@@ -40,10 +40,13 @@ class MatchFetcher
     Icalendar.parse(raw_ical).first
   end
 
-  def fix_descriptions(ical_data)
+  def setup_descriptions(ical_data)
     ical_data.events.each do |event|
       orig_descr_str = event.description.respond_to?(:join) ? event.description.join : event.description
       descr = orig_descr_str.gsub(%r{<a.+href=.+otteluid=(\d+).+</a>}, '\1')
+      if event.url
+        descr += "\n\n#{event.url}"
+      end
       event.description = descr
     end
     ical_data
