@@ -75,5 +75,7 @@ get '/cal/:referee_id' do |referee_id|
     })
   end
 
+  headers 'Content-Type' => 'text/plain'
+
   matches.ical.to_ical
 end
